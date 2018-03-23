@@ -1,14 +1,23 @@
 <?php
 
+if(isset($_GET)){
+    if(isset($_GET['crime_id'])){
+        $crime_id = $_GET['crime_id'];
+    }else{
+        $crime_id = 1;
+    }
+}
+
 require_once 'head.php';
 require_once 'header.php';
+
 ?>
 
         <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header"> 
-                        <b><a class="navbar-brand" style="text-align:      center" href="#"> Real Time Details of Drone</a></b>
+                        <b><a class="navbar-brand" style="text-align: center" href="#"> Real Time Details of Drone</a></b>
                     </div>
                     
                 </div>
@@ -110,7 +119,7 @@ require_once 'header.php';
                                     <i class="material-icons">flight_land</i>
                                 </div>
 
-                                        <button class="btn btn-success    " >Land</button>
+                                        <button class="btn btn-success" >Land</button>
                             
 
                                     </div>
@@ -136,16 +145,17 @@ require_once 'header.php';
                                     <i class="material-icons">collections</i>
                                 </div>
                                 <h4 class="title">Photos of landing location</h4>
-                                <img src="" height="20px">
-                                <img src="#">
-                                <img src="#">
-                                <img src="#">
-                                </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <iframe width="500" height="400" src="http://www.ustream.tv/embed/23456220?html5ui" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent; margin-top: 20px"></iframe>
+                    <div class="col-md-6" style="border:3px solid grey; overflow-y:auto; height: 350px;padding:10px; ">
+
+                    <?php
+                        require_once 'img.php';
+                    ?>
+<!--                        <iframe width="500" height="400" src="http://www.ustream.tv/embed/23456220?html5ui" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent; margin-top: 20px"></iframe>
+                -->
                     </div>
                     <div class="col-lg-3">
                         <div class="row">

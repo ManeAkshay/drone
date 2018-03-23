@@ -13,12 +13,18 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-dashboard.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href='assets/css/googleapis.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="assets/css/blueimp-gallery.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
     <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/material-dashboard.js"></script>
     <script type="text/javascript" src="assets/js/material.min.js"></script>
+    <script type="text//javascript" src="assets/js/own.js"></script>
+    <script type="text/javascript" src="assets/js/blueimp-gallery.js"></script>
 </head>
 <body>

@@ -88,7 +88,8 @@ require_once 'header.php';
                                 <div class="card-content">
                                     <p class="category">Current Location</p>
                                     <h3 class="title">
-                                    <a href="maps.php" >click here</a>
+                                    <small id="location"></small>
+                                    
                                     </h3>
                                 </div>
                             </div>

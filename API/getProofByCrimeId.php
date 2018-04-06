@@ -8,9 +8,12 @@ if($_GET){
 		$result= $mysqli->query($query);
 		if($result->num_rows > 0){
 				foreach ($result as $proof) {
-					$row[] = $proof;
+					$row['proof'][] = $proof;
 				}
 		}
+		$query = "SELECT * FROM location where 	crime_id = $crime_id ORDER BY ts DESC LIMIT 1";
+		$result = $mysqli->query($query);
+		$row['location'] = $result->fetch_assoc();	
 		echo json_encode($row); 
 	}
 }

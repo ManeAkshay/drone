@@ -23,13 +23,15 @@
                 type:'GET',
                 success:function(result) {
                     var i = 1;
+                    
                     res = jQuery.parseJSON(result);
-                    for(var row in res){
-                        console.log(res[row]['id']);
-                        var r = res[row];
+                    console.log(result);
+                    for(var row in res['proof']){
+                        //console.log(res['proof'][row]['id']);
+                        var r = res['proof'][row];
                         if(id.indexOf(r['id']) == -1){
                             id.push(r['id']);
-                            console.log(id);
+                            //console.log(id);
                             var a = $('<a href="'+r['path']+'" title="'+i+'" >'  );
                             var img = $('<img src="'+r['path']+'" alt="'+i+'" height=50>' );
                             $("#links").append(a);
@@ -37,6 +39,10 @@
                             i++;
                         }
                     }
+
+                    var lat = res['location']['latitude'];
+                    var lon = res['location']['longitude']; 
+                    $('#location').text(lat+' , '+lon);
                 }
             });
         document.getElementById('links').onclick = function (event) {

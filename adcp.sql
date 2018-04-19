@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2018 at 08:47 AM
+-- Generation Time: Apr 19, 2018 at 08:50 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,6 +23,75 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `crime`
+--
+
+CREATE TABLE IF NOT EXISTS `crime` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `victim_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `crime_type` varchar(30) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `crime`
+--
+
+INSERT INTO `crime` (`id`, `victim_id`, `location_id`, `crime_type`, `ts`) VALUES
+(1, 1, 2, '', '2018-04-10 23:01:30'),
+(2, 5, 180, '', '2018-04-10 23:03:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drone_crime`
+--
+
+CREATE TABLE IF NOT EXISTS `drone_crime` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `drone_id` varchar(10) NOT NULL,
+  `crime_id` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drone_info`
+--
+
+CREATE TABLE IF NOT EXISTS `drone_info` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `drone_id` varchar(10) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `location_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `drone_id` (`drone_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drone_location`
+--
+
+CREATE TABLE IF NOT EXISTS `drone_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `drone_id` varchar(10) NOT NULL,
+  `crime_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `location`
 --
 
@@ -34,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `creation_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'current timestamp for ordering',
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=135 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=183 ;
 
 --
 -- Dumping data for table `location`
@@ -174,7 +243,55 @@ INSERT INTO `location` (`id`, `latitude`, `longitude`, `crime_id`, `creation_ts`
 (131, '19.307604', '72.7887096', 13, '2018-03-27 14:32:15', '2018-03-27 14:32:15'),
 (132, '19.3076052', '72.7887084', 3, '2018-03-27 14:32:15', '2018-03-27 14:32:15'),
 (133, '19.3076057', '72.7887068', 13, '2018-03-27 14:32:20', '2018-03-27 14:32:20'),
-(134, '19.3076069', '72.7887062', 3, '2018-03-27 14:32:21', '2018-03-27 14:32:21');
+(134, '19.3076069', '72.7887062', 3, '2018-03-27 14:32:21', '2018-03-27 14:32:21'),
+(135, '19.3074725', '72.7887996', 13, '2018-04-09 13:02:55', '2018-04-09 13:02:55'),
+(136, '19.3074725', '72.7887996', 13, '2018-04-09 13:02:55', '2018-04-09 13:02:55'),
+(137, '19.3074725', '72.7887996', 13, '2018-04-09 13:07:12', '2018-04-09 13:07:12'),
+(138, '19.3074725', '72.7887996', 13, '2018-04-09 13:07:12', '2018-04-09 13:07:12'),
+(139, '19.3074725', '72.7887996', 13, '2018-04-09 13:07:22', '2018-04-09 13:07:22'),
+(140, '19.3074725', '72.7887996', 13, '2018-04-09 13:07:24', '2018-04-09 13:07:24'),
+(141, '19.3074725', '72.7887996', 13, '2018-04-09 13:07:56', '2018-04-09 13:07:56'),
+(142, '19.3074725', '72.7887996', 13, '2018-04-09 13:08:11', '2018-04-09 13:08:11'),
+(143, '19.3074725', '72.7887996', 13, '2018-04-09 13:09:59', '2018-04-09 13:09:59'),
+(144, '19.3074725', '72.7887996', 13, '2018-04-09 14:00:51', '2018-04-09 14:00:51'),
+(145, '19.3074725', '72.7887996', 13, '2018-04-09 14:00:59', '2018-04-09 14:00:59'),
+(146, '19.3074725', '72.7887996', 13, '2018-04-09 14:01:18', '2018-04-09 14:01:18'),
+(147, '19.3074725', '72.7887996', 13, '2018-04-09 14:05:04', '2018-04-09 14:05:04'),
+(148, '19.3074725', '72.7887996', 13, '2018-04-10 21:18:12', '2018-04-10 21:18:12'),
+(149, '19.3074725', '72.7887996', 13, '2018-04-10 21:18:55', '2018-04-10 21:18:55'),
+(150, '19.3074725', '72.7887996', 13, '2018-04-10 21:19:02', '2018-04-10 21:19:02'),
+(151, '19.307472', '72.7887993', 13, '2018-04-10 21:19:48', '2018-04-10 21:19:48'),
+(152, '19.3074721', '72.7887994', 13, '2018-04-10 21:19:49', '2018-04-10 21:19:49'),
+(153, '19.3074723', '72.7887994', 13, '2018-04-10 21:20:02', '2018-04-10 21:20:02'),
+(154, '19.3074723', '72.7887994', 13, '2018-04-10 21:20:34', '2018-04-10 21:20:34'),
+(155, '19.3074723', '72.7887994', 13, '2018-04-10 21:20:36', '2018-04-10 21:20:36'),
+(156, '19.3074725', '72.7887996', 13, '2018-04-10 21:21:04', '2018-04-10 21:21:04'),
+(157, '19.3074725', '72.7887996', 13, '2018-04-10 21:36:54', '2018-04-10 21:36:54'),
+(158, '19.3074725', '72.7887996', 13, '2018-04-10 21:37:33', '2018-04-10 21:37:33'),
+(159, '20.860914', '71.2390365', 13, '2018-04-10 21:38:28', '2018-04-10 21:38:28'),
+(160, '20.860914', '71.2390365', 13, '2018-04-10 21:38:55', '2018-04-10 21:38:55'),
+(161, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:01', '2018-04-10 21:39:01'),
+(162, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:07', '2018-04-10 21:39:07'),
+(163, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:08', '2018-04-10 21:39:08'),
+(164, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:08', '2018-04-10 21:39:08'),
+(165, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:10', '2018-04-10 21:39:10'),
+(166, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:10', '2018-04-10 21:39:10'),
+(167, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:13', '2018-04-10 21:39:13'),
+(168, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:39', '2018-04-10 21:39:39'),
+(169, '19.3074725', '72.7887996', 13, '2018-04-10 21:39:40', '2018-04-10 21:39:40'),
+(170, '19.3074725', '72.7887996', 13, '2018-04-10 21:48:32', '2018-04-10 21:48:32'),
+(171, '19.3074725', '72.7887996', 13, '2018-04-10 21:51:36', '2018-04-10 21:51:36'),
+(172, '19.3074725', '72.7887996', 13, '2018-04-10 21:53:01', '2018-04-10 21:53:01'),
+(173, '19.3074725', '72.7887996', 13, '2018-04-10 21:55:22', '2018-04-10 21:55:22'),
+(174, '19.3074725', '72.7887996', 13, '2018-04-10 21:57:47', '2018-04-10 21:57:47'),
+(175, '19.3074725', '72.7887996', 13, '2018-04-10 22:03:10', '2018-04-10 22:03:10'),
+(176, '19.3074725', '72.7887996', 13, '2018-04-10 22:48:33', '2018-04-10 22:48:33'),
+(177, '19.3074725', '72.7887996', 13, '2018-04-10 22:48:48', '2018-04-10 22:48:48'),
+(178, '19.3074725', '72.7887996', 13, '2018-04-10 22:48:48', '2018-04-10 22:48:48'),
+(179, '19.3074725', '72.7887996', 13, '2018-04-10 23:02:00', '2018-04-10 23:02:00'),
+(180, '19.3074725', '72.7887996', 13, '2018-04-10 23:02:59', '2018-04-10 23:02:59'),
+(181, '19.3074725', '72.7887996', 13, '2018-04-10 23:03:05', '2018-04-10 23:03:05'),
+(182, '19.3074725', '72.7887996', 13, '2018-04-10 23:03:05', '2018-04-10 23:03:05');
 
 -- --------------------------------------------------------
 
@@ -318,15 +435,39 @@ CREATE TABLE IF NOT EXISTS `victim` (
   `fname` varchar(64) NOT NULL COMMENT 'Victim''s first name',
   `mname` varchar(64) NOT NULL COMMENT 'Victim''s middle name',
   `lname` varchar(64) NOT NULL COMMENT 'Victim''s last name',
-  `phone1` varchar(10) NOT NULL COMMENT 'Victim''s primary mobile number',
-  `phone2` varchar(10) NOT NULL COMMENT 'Victim''s secondary mobile number (One of family member) ',
+  `mobile_no` varchar(10) NOT NULL COMMENT 'Victim''s primary mobile number',
+  `emergency_no` varchar(10) NOT NULL COMMENT 'Victim''s secondary mobile number (One of family member) ',
   `address` varchar(256) NOT NULL COMMENT 'Victim''s address',
   `aadhar` varchar(12) NOT NULL COMMENT 'Victim''s aadhar number',
   `email` varchar(128) NOT NULL COMMENT 'Victim''s email id for verification',
   `pincode` varchar(6) NOT NULL COMMENT 'Pincode use to alert the police station within that area',
   `phone3` varchar(10) NOT NULL COMMENT 'Victim''s secondary mobile number (One of family member) ',
+  `password` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `victim`
+--
+
+INSERT INTO `victim` (`id`, `fname`, `mname`, `lname`, `mobile_no`, `emergency_no`, `address`, `aadhar`, `email`, `pincode`, `phone3`, `password`) VALUES
+(5, 'akshay', '', 'mane', '9619249577', '9869104122', '', '', 'mane.akshay1997@gmail.com', '', '', '123456'),
+(8, 'Ruhi', '', 'Gujar', '9168807496', '9619249577', '', '', 'gujarruhi@gmail.com', '', '', 'ruhi123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `victim_location`
+--
+
+CREATE TABLE IF NOT EXISTS `victim_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `victim_id` int(11) NOT NULL,
+  `crime_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
